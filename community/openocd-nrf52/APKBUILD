@@ -1,0 +1,78 @@
+# Contributor: Emmanuel Blot <emmanuel.blot@free.fr>
+pkgname=openocd-nrf52
+pkgver=0.10.0
+pkgrel=1
+pkgdesc="Free and Open On-Chip Debugging, In-System Programming customized for nRF52 on RPi"
+url="http://openocd.org/"
+arch="all"
+license="GPL"
+depends=""
+depends_dev=""
+makedepends="libtool autoconf automake"
+install=""
+subpackages="$pkgname-dev $pkgname-doc"
+source="https://github.com/eblot/openocd/archive/nrf52-rpi-v$pkgver.tar.bz2"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+   ./bootstrap
+	cd "$builddir"
+	./configure \
+		--build=$CBUILD \
+		--host=$CHOST \
+		--prefix=/usr/local/nrf52 \
+		--sysconfdir=/usr/local/nrf52/etc \
+		--mandir=/usr/local/nrf52/share/man \
+		--localstatedir=/var \
+		--disable-werror \
+		--enable-verbose-jtag-io \
+		--enable-bcm2835gpio \
+		--disable-ftdi \
+		--disable-cmsis-dap \
+		--disable-jlink \
+		--disable-doxygen-html \
+		--disable-doxygen-pdf \
+		--disable-werror \
+		--disable-dummy \
+		--disable-stlink \
+		--disable-ti-icdi \
+		--disable-ulink \
+		--disable-usb-blaster-2 \
+		--disable-ft232r \
+		--disable-vsllink \
+		--disable-xds110 \
+		--disable-osbdm \
+		--disable-opendous \
+		--disable-aice \
+		--disable-usbprog \
+		--disable-rlink \
+		--disable-armjtagew \
+		--disable-kitprog \
+		--disable-usb-blaster \
+		--disable-presto \
+		--disable-openjtag \
+		--disable-parport \
+		--disable-jtag_vpi \
+		--disable-amtjtagaccel \
+		--disable-zy1000-master \
+		--disable-zy1000 \
+		--disable-ep93xx \
+		--disable-at91rm9200 \
+		--disable-imx_gpio \
+		--disable-gw16012 \
+		--disable-oocd_trace \
+		--disable-buspirate \
+		--disable-sysfsgpio \
+		--disable-minidriver-dummy \
+		--disable-remote-bitbang
+	make
+}
+
+check() {
+	make -C "$builddir" check
+}
+
+package() {
+	cd "$builddir"
+	make DESTDIR="$pkgdir" install
+}
