@@ -2,7 +2,7 @@
 # Contributor: Kiyoshi Aman <kiyoshi.aman@gmail.com>
 
 pkgname=python3_5
-pkgver=3.5.5
+pkgver=3.5.6
 _basever="${pkgver%.*}"
 pkgrel=11
 pkgdesc="A high-level scripting language"
@@ -92,5 +92,5 @@ tkinter() {
 	mv "$pkgdir"/$libdir/_tkinter.*.so "$subpkgdir"/$libdir/
 }
 
-sha512sums="c9056baee6a2d1fe7f14b1f310db95b78e8972766d086f8ae10954f38f8182956171580bde01ddadebe897f2545a6fbe47669ca3e4887026ac1fae5ee9197f22  Python-3.5.5.tar.xz
+sha512sums="1ccf287dbe8594eb577c1197c19d882fbe235c72f4c01cda23258f2add8a93e639b41ebaf556508b867cbe1b4c1fc4e1cf457d70b98cf7a1502013660a7e0ac1  Python-3.5.6.tar.xz
 ab8eaa2858d5109049b1f9f553198d40e0ef8d78211ad6455f7b491af525bffb16738fed60fc84e960c4889568d25753b9e4a1494834fea48291b33f07000ec2  musl-find_library.patch"
