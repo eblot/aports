@@ -4,7 +4,7 @@
 pkgname=python3_5
 pkgver=3.5.6
 _basever="${pkgver%.*}"
-pkgrel=11
+pkgrel=1
 pkgdesc="A high-level scripting language"
 url="http://www.python.org"
 arch="all"
